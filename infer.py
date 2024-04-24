@@ -15,7 +15,7 @@ from datetime import datetime
 from urllib.parse import urlparse
 from mega import Mega
 
-os.system("python models.py")
+#os.system("python models.py")
 
 now_dir = os.getcwd()
 tmp = os.path.join(now_dir, "TEMP")
@@ -624,7 +624,10 @@ def change_audio_mode(vc_audio_mode):
         
 with gr.Blocks() as app:
     gr.Markdown(
-        "# <center> Advanced RVC Inference\n"
+        """
+        # <center> RVC Inference\n
+          <center> An easy RVC inference!
+        """
     )
     with gr.Row():
         sid = gr.Dropdown(
@@ -922,7 +925,7 @@ with gr.Blocks() as app:
         )
     with gr.TabItem("Model Downloader"):
         gr.Markdown(
-            "# <center> Model Downloader (Beta)\n"+
+            "# <center> Model Downloader\n"+
             "#### <center> To download multi link you have to put your link to the textbox and every link separated by space\n"+
             "#### <center> Support Direct Link, Mega, Google Drive, etc"
         )
@@ -936,9 +939,5 @@ with gr.Blocks() as app:
                 inputs=[md_text],
                 outputs=[md_download_logs]
             )
-    with gr.TabItem("Settings"):
-        gr.Markdown(
-            "# <center> Settings\n"+
-            "#### <center> Work in progress"
-        )
+    
     app.queue(concurrency_count=1, max_size=50, api_open=config.api).launch(share=config.colab)
